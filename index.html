@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<meta charset="utf-8">
+<meta property="og:title" content="monkey story plus" />
+<meta property="og:image" content="image/s-1.jpg" />
+<meta property="og:description" content="monkey story plus เกมตะลุยด่านสุดมันส์ ด้วยตำนวนไซอิ๋ว" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // ฟังก์ชันสำหรับตรวจสอบ IP กับ APIIP.NET
+  async function checkIPAndRedirect() {
+      // ดึง IP Address ของผู้เข้าชม
+      const ip = await fetch('https://api64.ipify.org?format=json')
+          .then(response => response.json())
+          .then(data => data.ip);
+
+      // ตรวจสอบ IP กับ APIIP.NET
+      const apiKey = '951e3796-c541-48b3-ae8b-becbdcb42db5'; // ใส่ API Key ที่ได้รับจาก APIIP.NET
+      const apiUrl = `https://apiip.net/api/check?apiKey=${apiKey}&ip=${ip}`;
+
+      try {
+          const response = await fetch(apiUrl);
+          const data = await response.json();
+
+          if (data.risk && data.risk.is_bot) {
+              // หากเป็น Bot อยู่ที่หน้า index.html
+              console.log("Bot detected: ", data);
+          } else {
+              // หากเป็นมนุษย์ Redirect ไปที่ home.html
+              window.location.href = '/home.html';
+          }
+      } catch (error) {
+          console.error("Error checking IP:", error);
+      }
+  }
+
+  // เรียกฟังก์ชันตรวจสอบเมื่อโหลดหน้า
+  document.addEventListener('DOMContentLoaded', checkIPAndRedirect);
+</script>
+
+
+<script>
+  // ทำการเปลี่ยนเส้นทางทันทีเมื่อโหลดหน้า
+  window.location.href = '/home.html';
+</script>
+
+<title> Monkey Story Plus </title>
+
+    <style>
+        body {
+          font-family: "Chonburi", serif;
+          background-image: url(image/bg-game.jpg);
+        }
+  
+        .animation-LTR {
+          animation: LTR 5s ease-in-out infinite;
+        }
+  
+        .animation-zoomingBox {
+          animation: zoomInOut 10s ease-in-out infinite;
+        }
+  
+        .animation-TB {
+          display: inline-block;
+          margin: 0 0.5rem;
+  
+          animation: bounce 3s ease infinite;
+          /* referring directly to the animation's @keyframe declaration */
+          animation-duration: 3s;
+          /* don't forget to set a duration! */
+        }
+  
+        .animation-flipinX {
+          display: inline-block;
+          margin: 0 0.5rem;
+  
+          animation: flipInX 3s ease;
+          /* referring directly to the animation's @keyframe declaration */
+          animation-duration: 3s;
+          /* don't forget to set a duration! */
+        }
+  
+        .animation-jackInTheBox {
+          display: inline-block;
+          margin: 0 0.5rem;
+  
+          animation: jackInTheBox 3s ease;
+          /* referring directly to the animation's @keyframe declaration */
+          animation-duration: 3s;
+          /* don't forget to set a duration! */
+        }
+  
+        @keyframes LTR {
+          0% {
+            transform: translateX(0px);
+          }
+  
+          25% {
+            transform: translateX(-100px);
+          }
+  
+          50% {
+            transform: translateX(0px);
+          }
+  
+          75% {
+            transform: translateX(100px);
+          }
+  
+          100% {
+            transform: translateX(0px);
+          }
+        }
+  
+        @keyframes zoomInOut {
+          0%,
+          100% {
+            transform: scale(1);
+          }
+  
+          50% {
+            transform: scale(1.5);
+          }
+        }
+  
+        .animation-shake {
+          animation: wiggle 2s linear infinite;
+        }
+  
+        /* Keyframes */
+        @keyframes wiggle {
+          0%,
+          7% {
+            transform: rotateZ(0);
+          }
+  
+          15% {
+            transform: rotateZ(-15deg);
+          }
+  
+          20% {
+            transform: rotateZ(10deg);
+          }
+  
+          25% {
+            transform: rotateZ(-10deg);
+          }
+  
+          30% {
+            transform: rotateZ(6deg);
+          }
+  
+          35% {
+            transform: rotateZ(-4deg);
+          }
+  
+          40%,
+          100% {
+            transform: rotateZ(0);
+          }
+        }
+      </style>
+
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav
+      class="fixed bg-red-500 flex justify-center py-5 w-full"
+      style="z-index: 99"
+    >
+      <div class="static flex justify-between items-center text-6xl w-[80%]">
+        <p
+          class="text-yellow-300 cursor-pointer"
+          data-aos="flip-up"
+          data-aos-offset="500"
+          data-aos-easing="ease-in-sine"
+        >
+          Monkey <span class="text-yellow-300">Story Plus</span>
+        </p>
+        <div
+          class="static flex justify-around items-center align-center text-2xl w-[50%] text-white"
+        >
+          <a
+            class="hover:bg-red-800 hover:text-yellow-300 hover:rounded-md cursor-pointer p-3"
+            href="#"
+            >หน้าแรก</a
+          >
+          <a
+            class="hover:bg-red-800 hover:text-yellow-300 hover:rounded-md cursor-pointer p-3"
+            href="#aboutPC"
+            >เกี่ยวกับเกมนี้
+          </a>
+          <a
+            class="hover:bg-red-800 hover:text-yellow-300 hover:rounded-md cursor-pointer p-3"
+            href="#systemPC"
+            >ความต้องการระบบ
+          </a>
+          <a
+            class="hover:bg-red-800 hover:text-yellow-300 hover:rounded-md cursor-pointer p-3"
+            href="#contactPC"
+            >ติดต่อเรา</a
+          >
+        </div>
+      </div>
+    </nav>
+    <br /><br /><br /><br /><br />
+
+    <!-- Main -->
+    <section class="static flex justify-center align-center" id="mainPC">
+      <div
+        class="bg-no-repeat inline-block text-8xl w-[1000px] flex flex-col justify-center items-center"
+      >
+        <br />
+        <img
+          src="image/s1.jpg"
+          alt=""
+          class="w-[800px] animation-LTR rounded-[50px] drop-shadow-2xl p-5"
+        />
+        <div class="h-4"></div>
+        <p class="text-red-800 p-5 text-center">
+          Monkey Story Plus
+        </p>
+        <p class="text-black text-xl mt-4 text-center animation-TB">
+          monkey story plus เกมตะลุยด่านสุดมันส์ ด้วยตำนวนไซอิ๋ว (Journey to the West) พร้อมตัวละครอย่าง ซุนหงอคง และเพื่อนร่วมทาง เช่น ตือโป๊ยก่าย และซัวเจ๋ง
+        </p>
+      </div>
+    </section>
+
+    <!-- about -->
+    <section
+      class="static flex justify-center align-center my-[100px] py-[100px]"
+      id="aboutPC"
+    >
+      <div
+        class="static flex flex-col justify-center items-center w-[80%] text-2xl px-[100px] text-justify rounded-[50px] bg-gradient-to-r from-red-800 via-red-600 to-red-800 pb-[100px]"
+      >
+        <p
+          class="text-white text-6xl p-9 bg-gradient-to-r from-red-800 to-red-900 rounded-b-[20px]"
+        >
+        ธีมและลักษณะของเกม
+        </p>
+        <br /><br />
+        <p
+          class="text-white"
+          data-aos="fade-right"
+          data-aos-offset="200"
+          data-aos-easing="ease-in-sine"
+        >
+        ธีมของเกมที่ดัดแปลง มาจากเรื่องราวไซอิ๋ว ที่เป็นเกมตะลุยด่านสุดมัน มีหลากหลายด่านให้ผู้เล่นได้เลือกเล่น เป็นการเดินทางที่แสนยาวนาน ของซุนหงอคง และเพื่อรร่วมทาง อยาง ตือโป๊ยก่าย และซัวเจ๋ง ปราบปีศาจ และเดินทางไปสู่คัมภีร์
+        </p>
+        
+      </div>
+    </section>
+
+    <!-- system -->
+    <section
+      id="systemPC"
+      class="static flex justify-center align-center my-[100px] py-[100px]"
+    >
+      <div
+        class="static flex flex-col justify-center items-center w-[80%] text-2xl px-[100px] text-justify rounded-[50px] bg-gradient-to-r from-red-800 via-red-600 to-red-800 pb-[100px]"
+      >
+        <p
+          class="text-white text-6xl p-9 bg-gradient-to-r from-red-800 to-red-900 rounded-b-[20px]"
+        >
+          ความต้องการระบบ
+        </p>
+        <br /><br />
+          <p
+            class="p-[50px] text-center text-black bg-white rounded-[50px]"
+            data-aos="fade-left"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+          >
+            <span class="text-3xl font-bold">รองรับทั้งระบบ Android และ IOS</span><br />
+            สามารถ Download ได้ตาม ระบบมือถือที่รองรับ อย่างเช่น Android ก็โหลดได้ที่ Google Play<br />
+            ส่วน IOS ก็โหลดได้ที่ App Store<br />
+            
+        </div>
+      </div>
+    </section>
+
+    <!-- contect -->
+    <section
+      id="contactPC"
+      class="static flex justify-center align-center my-[100px] py-[100px]"
+    >
+      <div
+        class="static flex flex-col justify-center items-center w-[80%] text-2xl px-[100px] text-justify rounded-[50px] bg-gradient-to-r from-red-800 via-red-600 to-red-800 pb-[100px]"
+      >
+        <p
+          class="text-white text-6xl p-9 bg-gradient-to-r from-red-800 to-red-900 rounded-b-[20px]"
+        >
+          ติดต่อเรา
+        </p>
+        <br /><br />
+        <div class="static flex w-[90%]">
+          <div
+            class="p-[50px] text-left text-black bg-red-300 rounded-[50px] w-full"
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+          >
+            <p class="text-4xl text-center">กรอกรายละเอียด</p>
+            <div class="w-full">
+              <label for="nameInput" class="text-lg font-medium">Name:</label>
+              <input
+                type="text"
+                id="nameInput1"
+                class="form-input px-4 py-2 border border-red-300 rounded-md focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 w-full"
+              />
+            </div>
+            <div class="">
+              <label for="nameInput" class="text-lg font-medium">Email:</label>
+              <input
+                type="text"
+                id="nameInput2"
+                class="form-input px-4 py-2 border border-red-300 rounded-md focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 w-full"
+              />
+            </div>
+            <div class="">
+              <label for="nameInput" class="text-lg font-medium">Tel:</label>
+              <input
+                type="text"
+                id="nameInput3"
+                class="form-input px-4 py-2 border border-red-300 rounded-md focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 w-full"
+              />
+            </div>
+            <div class="">
+              <label for="descriptionInput" class="text-lg font-medium"
+                >Description</label
+              >
+              <textarea
+                id="descriptionInput"
+                class="form-textarea px-4 py-2 border border-red-300 rounded-md focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 w-full"
+                rows="4"
+                placeholder="Enter your description here..."
+              ></textarea>
+            </div>
+            <a class="" href="#">
+              <button
+                type="submit"
+                class="px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+              >
+                Submit
+              </button>
+            </a>
+          </div>
+          <br />
+          <div
+            class="p-[50px] text-start text-black bg-red-500 rounded-[50px]"
+            data-aos="fade-left"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+          >
+            <p class="text-4xl text-center">ลงทะเบียนผ่านไลน์</p>
+            <br />
+            <p>
+              <a onclick="trackSubscribe()" href=""
+                ><img
+                  src="https://scdn.line-apps.com/n/line_add_friends/btn/th.png"
+                  alt="เพิ่มเพื่อน"
+                  height=""
+                  border="0"
+              /></a>
+            </p>
+            <br />
+            <p class="mdQrTxt01">Add LINE Friends via QR Code</p>
+            <p class="mdQrTxt02">
+              Open the Friends tab in your LINE app, tap the add friends icon
+              in<br />the top right, select "QR code," and then scan this QR
+              code.
+            </p>
+            <br />
+            <ul class="mdQrLink">
+              <li>
+                <a
+                  href="https://line.me/"
+                  class="hover:text-sky-800 text-white"
+                  >Learn more about LINE</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://line.me/download"
+                  class="hover:text-sky-800 text-white"
+                  >Download now</a
+                >
+              </li>
+              <div class="contact-item"></div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
